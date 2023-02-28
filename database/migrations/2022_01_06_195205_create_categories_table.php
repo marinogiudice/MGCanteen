@@ -11,9 +11,9 @@ class CreateCategoriesTable extends Migration
      * Defines the table columns name and types, primary key and foreign key
      * Sets a Recursive relationship on categories to allow the creation of subcategories
      *
-     * @return void
      * @author Marino Giudice
      */
+    
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
