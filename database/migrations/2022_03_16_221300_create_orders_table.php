@@ -29,7 +29,7 @@ class CreateOrdersTable extends Migration
             $table->string('guest_name');
             //order total
             $table->decimal('order_total', 5,2);
-            //enable timestamp record of the operation performed on the order table.
+            //enable timestamp record of the operation performed on the orders table.
             $table->timestamps();
         });
     }
