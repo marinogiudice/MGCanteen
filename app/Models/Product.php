@@ -24,7 +24,7 @@ class Product extends Model
 
     //returns the orders where this product appears
     //uses the pivot table orderProduct
-    public function orders() {
+    public static function orders() {
         return $this->belongsToMany(Order::class,'order_product', 'product_name', 'order_id')->withTimestamps();
     }
 
