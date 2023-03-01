@@ -8,7 +8,7 @@ use App\Http\Controllers\OrderingController;
 use Session;
 
 /**
- * The class manages the operation on the order model class
+ * The class manages the operation on the Order Model Objects.
  * 
  * @author Marino Giudice
  */
