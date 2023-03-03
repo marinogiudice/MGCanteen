@@ -1,19 +1,70 @@
-// Body
-$body-bg: #f8fafc;
+/* font import */
+@font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../../public/fonts/Quicksand-VariableFont_wght.ttf');
+}
 
-// Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+/* custom variables declarations */
 
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$brand-font-family: "Quicksand";
+$brand-color-primary: #70263d;
+$brand-color-secondary: #4e6db3;
+$brand-color-dark: #1c1c1c;
+$brand-color-light: #b0b2bf;
+$brand-color-background: #f2f2f2;
+
+$variable-prefix:             bs- !default;
+
+/* defines letter-space values */
+
+$letter-space: (
+    0: 0,
+    1: 0.5px,
+    2: 1px,
+    3: 1.5px,
+    4: 2px,
+    5: 2.5px,
+    6: 3px
+);
+
+
+
+/* bootstrap defaults customisation */
+
+$enable-shadows: true;
+$enable-responsive-font-sizes: true;
+
+/* colors */
+
+$primary: $brand-color-primary;
+$secondary: $brand-color-secondary;
+$light: $brand-color-light;
+$dark: $brand-color-dark;
+
+/* box shadow */
+
+$box-shadow: 0 0.25rem 0.5rem 0 $dark;
+
+/* fonts */
+
+$font-family-base: $brand-font-family;
+$line-height-base: 1.7;
+
+/* navbar component customisation */
+
+$navbar-dark-toggler-border-color: $dark;
+
+
+$card-cap-bg: #ffffff;
+
+$body-bg: $brand-color-background;
+
+$carousel-control-color: black;
+
+$pagination-active-bg: $dark;
+
+$breadcrumb-bg: none;
+
+$breadcrumb-active-color: $secondary;

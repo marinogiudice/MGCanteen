@@ -1,8 +1,89 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+
 
 // Variables
 @import 'variables';
+@import '_ratio';
 
 // Bootstrap
+
 @import '~bootstrap/scss/bootstrap';
+
+//enables responsive font-size
+
+body {
+    @include rfs(1.1rem);
+}
+
+/* styles the  logo image */
+
+.logo {
+    height: 80%;
+    margin-top: 1rem;
+}
+
+/* class used to set the background-color of the element with content */
+
+.panel {
+    background-color: $white;
+    
+}
+
+
+/* styles the navbar-dark .nav-link elements */
+
+.navbar-dark .nav-link {
+    font-weight: $font-weight-bold;
+    @include rfs(1.2rem);  
+}
+
+/* styles the links in the page content */
+
+.text-link {
+    font-weight: $font-weight-bold;
+   
+}
+
+/* sets the tables rows top border */
+
+table tr {
+    border-top: $table-border-width $table-border-color solid;
+}
+
+/* removes the top border from the table header row */
+
+table tr:first-child {
+    border-top: none;
+}
+
+
+/* styles breadcrumb link */
+
+.breadcrumb a {
+    color: $primary;
+    font-weight: $font-weight-bold;
+}
+
+/* styles the image icon in the top of the page. */
+
+.section-img-top {
+    width: 2rem;
+    max-height: 2rem;
+}
+
+/* generates the .ls class to set the letter-spacing of the elements in 
+   bootstrap style: property-breakpoint-value.
+   Uses the custom map variable $letter-space and the bootstrap default variable 
+   $grid-breakpoints.
+   I had a look around in the bootstraps scss files to generate this script. */
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+        @each $size, $length in $letter-space {
+            .ls#{$infix}-#{$size} {
+                letter-spacing: $length;
+            }
+        }
+    }
+}
