@@ -1,18 +1,31 @@
 <?php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Database\seeders\UserSeeder;
+ 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
-     *
+     * Run the database seeders.
+     * The class populate the users table of the default 
+     * user administrator with credentials:
+     * username:demouser
+     * password:canteen
+     * 
      * @return void
+     * @author Marino Giudice
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        DB::table('users')->insert([
+            'name' => 'Demo User',
+            'username' => 'demouser',
+            'password' => Hash::make('canteen'),
+        ]);
     }
+        
 }
