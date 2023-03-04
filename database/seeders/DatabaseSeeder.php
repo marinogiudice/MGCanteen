@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeders.
-     * The class populate the users table of the default 
+     * The class populates the users table of the default 
      * user administrator with credentials:
      * username:demouser
      * password:canteen
