@@ -48,7 +48,7 @@ class OrderingController extends Controller
     }
 
     //shows the order confirmation to the customer
-    public function showOrder(Request $request, Order $order) {
+    public static function showOrder(Request $request, Order $order) {
         $orderItems = $order->products()->get();
         $quantities = $order->sumQty();
         $total = $order->total;

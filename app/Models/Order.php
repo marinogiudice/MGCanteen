@@ -23,7 +23,7 @@ class Order extends Model
 
     //returns the products of an order
     //used to present the order conformation to the user.
-    public static function products() {
+    public function products() {
         return $this->belongsToMany(Product::class,'order_product', 'order_id', 'product_name')->withPivot('quantity','total')->withTimeStamps();
     }
 
@@ -35,7 +35,7 @@ class Order extends Model
 
     //returns the orderProducts items of the orderProduct db table
     //belonging to an order. Used to display order details in the order history 
-    public static function orderProducts() {
+    public function orderProducts() {
         return $this->hasMany(orderProduct::class);
 
     }
@@ -47,7 +47,7 @@ class Order extends Model
     }
 
     //return the total quantties of the orderProduct of an order details.
-    public static function orderProductsQty() {     
+    public function orderProductsQty() {     
         return $this->orderProducts()->sum('quantity');
     }
 }

@@ -25,7 +25,7 @@ class FileUploadController extends Controller
      * 
      */
 
-    public function uploadFile($file, $path, $name) {
+    public static function uploadFile($file, $path, $name) {
         try {
             $newFileName=$name.'.'.$file->extension();
             return $file->storeAs($path,$newFileName,'public');
@@ -41,7 +41,7 @@ class FileUploadController extends Controller
      * the new name and the name of the folder where it's stored 
      */
 
-    public function renameFile($namePath, $newName, $prefix) {
+    public static function renameFile($namePath, $newName, $prefix) {
         $extension = pathinfo(storage_path($namePath), PATHINFO_EXTENSION);
                 $imagePath=($prefix.'/').Str::lower($newName).'.'.$extension;
                 Storage::disk('public')->move($namePath, $imagePath);

@@ -31,7 +31,7 @@ class Category extends Model
      * 
      */
     
-    public static function categories()
+    public function categories()
     {
         return $this->hasMany(Category::class, 'parent_category')->orderBy('category_name','ASC');
     }
@@ -41,7 +41,7 @@ class Category extends Model
      * Uses the method categories to obtain the first level of children. 
      */
 
-    public static function childrenCategories()
+    public function childrenCategories()
     {
         return $this->hasMany(Category::class, 'parent_category')->with('categories')->orderBy('category_name','asc');
     }
@@ -89,7 +89,7 @@ class Category extends Model
         return $result;
     }
 
-    public static function getParent() {
+    public function getParent() {
         return $this->belongsTo(Category::class, 'parent_category');
     }
 
@@ -106,7 +106,7 @@ class Category extends Model
         return $result;
     }
 
-    public static function products()
+    public function products()
     {
         return $this->hasMany(Product::class, 'product_category',)->orderBy('product_category','ASC');
     }

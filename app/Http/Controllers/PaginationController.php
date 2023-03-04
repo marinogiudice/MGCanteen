@@ -17,7 +17,7 @@ class paginationController extends Controller
      * The function paginates the data
      * Takes as parameter the request and the data to paginate
      */
-    public function paginateArray (Request $request, $data) {
+    public static function paginateArray (Request $request, $data) {
 
     
     // Create a new  collection from data
