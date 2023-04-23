@@ -11,7 +11,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
  * 
  */
 
-class paginationController extends Controller
+class PaginationController extends Controller
 {   
     /**
      * The function paginates the data
