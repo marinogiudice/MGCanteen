@@ -79,7 +79,7 @@ class CategoryController extends Controller
                 'file' => 'image|mimes:jpeg,jpg,png,gif|max:2048'
             ]);
             //moves the file in the server
-            $imagePath =FileUploadController::uploadFile($request->file,'categories',Str::lower($request->category_name));
+            $imagePath =FileUploadController::uploadFile($request->file,'categories',$request->category_name);
             if(!$imagePath) {
                 return redirect()->back()->with('fail', 'Impossible to Complete File Upload Internal Error');
             }

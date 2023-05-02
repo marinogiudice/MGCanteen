@@ -27,7 +27,8 @@ class FileUploadController extends Controller
 
     public static function uploadFile($file, $path, $name) {
         try {
-            $newFileName=$name.'.'.$file->extension();
+            $newFileName=Str::lower(Str::replace(' ', '_', $name));
+            $newFileName=$newFileName.'.'.$file->extension();
             return $file->storeAs($path,$newFileName,'public');
         }
         catch(\Exception $e) {
@@ -43,8 +44,8 @@ class FileUploadController extends Controller
 
     public static function renameFile($namePath, $newName, $prefix) {
         $extension = pathinfo(storage_path($namePath), PATHINFO_EXTENSION);
-                $imagePath=($prefix.'/').Str::lower($newName).'.'.$extension;
-                Storage::disk('public')->move($namePath, $imagePath);
-                return $imagePath;
+        $imagePath=($prefix.'/').Str::lower(Str::replace(' ','_',$newName)).'.'.$extension;
+        Storage::disk('public')->move($namePath, $imagePath);
+        return $imagePath;
     }
 }

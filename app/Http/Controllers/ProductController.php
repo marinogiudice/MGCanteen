@@ -69,7 +69,7 @@ class ProductController extends Controller
                 'file' => 'image|mimes:jpeg,jpg,png,gif|max:2048'
             ]);
             //moves the file on the server
-            $imagePath =FileUploadController::uploadFile($request->file,'products',Str::lower($request->product_name));
+            $imagePath =FileUploadController::uploadFile($request->file,'products',$request->product_name);
             if(!$imagePath) {
                 return redirect()->back()->with('fail', 'Impossible to Complete File Upload Internal Error');
             }
