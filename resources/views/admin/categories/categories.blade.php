@@ -61,12 +61,12 @@
                     </thead>
                     <tbody>
                         @foreach($paginatedCategories as $category)
-                        @php $ident= str_repeat('- ',$category->get('depth'));@endphp
+                        @php $ident= str_repeat('- ',$category->get_depth());@endphp
                         <tr>
-                            <td><a class="text-primary" href="{{ '/admin/categories/'.$category->get('category')->category_name }}">{{ $ident.capitalize($category->get('category')->category_name)}}</a></td>
+                            <td><a class="text-primary" href="{{ '/admin/categories/'.$category->get_category_name() }}">{{ $ident.capitalize($category->get_category_name())}}</a></td>
                             <td class="text-right">
-                                <a class="btn btn-secondary d-inline-block" href="/admin/categories/{{ $category->get('category')->category_name }}/edit">Edit</a>
-                                <form method="POST" class="d-inline-block" action="/admin/categories/{{ $category->get('category')->category_name }}">
+                                <a class="btn btn-secondary d-inline-block" href="/admin/categories/{{ $category->get_category_name() }}/edit">Edit</a>
+                                <form method="POST" class="d-inline-block" action="/admin/categories/{{ $category->get_category_name() }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-primary d-inline">Delete</button>

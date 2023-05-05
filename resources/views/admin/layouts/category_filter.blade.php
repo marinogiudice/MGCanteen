@@ -17,34 +17,34 @@
             @endif
             @if(isset($product))
                 @if($product->product_category === null)
-                    <option value="master" selected>Master</option>
+                    <option value="main" selected>Master</option>
                 @endif
             @endif
             @if(!isset($category) && !isset($product))
-                <option value="master">Master</option>
+                <option value='main'>Master</option>
             @endif
             
             @foreach ($categories as $categoryEl)
-                 @php $ident= str_repeat('- ',$categoryEl->get('depth')); 
+                 @php $ident= str_repeat('- ',$categoryEl->get_depth()); 
                 $selected="";
                 if(isset($category)) {
-                    if($categoryEl->get('category')->category_name == $category->parent_category) {
+                    if($categoryEl->get_category_name() == $category->parent_category) {
                          $selected='selected';
                     }
                 }
                 if(isset($product)) {
-                    if($categoryEl->get('category')->category_name == $product->product_category) {
+                    if($categoryEl->get_category_name() == $product->product_category) {
                          $selected='selected';
                     }
                 }
                 
                 @endphp
                 @if(isset($children))
-                @if(!($children->contains($categoryEl->get('category')->category_name) ) && (!($categoryEl->get('category')->category_name == $category->category_name)))
-                    <option value="{{ $categoryEl->get('category')->category_name }}"  @if (old('category') == $categoryEl->get('category')->category_name) selected="selected" @endif {{ $selected }} >{{ $ident.$categoryEl->get('category')->category_name }}</option>
+                @if(!($children->contains($categoryEl->get_category_name()) ) && (!($categoryEl->get_category_name() == $category->category_name)))
+                    <option value="{{ $categoryEl->get_category_name() }}"  @if (old('category') == $categoryEl->get_category_name()) selected="selected" @endif {{ $selected }} >{{ $ident.$categoryEl->get_category_name() }}</option>
                 @endif
                 @else
-                <option value="{{ $categoryEl->get('category')->category_name }}"  @if (old('category') == $categoryEl->get('category')->category_name) selected="selected" @endif {{ $selected }} >{{ $ident.$categoryEl->get('category')->category_name }}</option>
+                <option value="{{ $categoryEl->get_category_name() }}"  @if (old('category') == $categoryEl->get_category_name()) selected="selected" @endif {{ $selected }} >{{ $ident.$categoryEl->get_category_name() }}</option>
                 @endif
             @endforeach
             

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\Models\Product;
+use App\Models\CategoryWithDepth;
 use Arr;
 
 /**
@@ -80,10 +81,10 @@ class Category extends Model
         $result=collect();
         $depth=0;
         foreach($categories as $category) {
-            $result->push(collect(['category'=> $category, 'depth'=>$depth]));
+            $categoryWithDepth = new CategoryWithDepth($category, $depth);
+            $result->push($categoryWithDepth);
             foreach($category->childrenCategories as $childCategory) {
                 $result=Category::child_category($childCategory, $depth,$result);
-                
             }
         }
         return $result;
@@ -96,7 +97,8 @@ class Category extends Model
     public static function child_category($child_category, $parentDpt, $result) {
         $depth=$parentDpt;
         $depth++;
-        $result->push(collect(['category'=> $child_category, 'depth'=>$depth]));
+        $categoryWithDepth = New CategoryWithDepth($child_category, $depth);
+        $result->push($categoryWithDepth);
         if($child_category->categories) {
             foreach($child_category->categories as $childCategory) {
                 $result=Category::child_category($childCategory,$depth,$result);
