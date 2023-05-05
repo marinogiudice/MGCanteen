@@ -17,11 +17,11 @@
             @endif
             @if(isset($product))
                 @if($product->product_category === null)
-                    <option value="main" selected>Master</option>
+                    <option value="master" selected>Master</option>
                 @endif
             @endif
             @if(!isset($category) && !isset($product))
-                <option value='main'>Master</option>
+                <option value="master">Master</option>
             @endif
             
             @foreach ($categories as $categoryEl)
