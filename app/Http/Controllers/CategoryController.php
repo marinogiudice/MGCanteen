@@ -33,7 +33,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $categories = Category::getCategories();
-        $paginatedCategories=PaginationController::paginateArray($request, $categories);
+        $paginatedCategories=PaginationController::paginateArray($request, $categories, 10);
         return view('admin.categories.categories',['categories'=>$categories, 'paginatedCategories' => $paginatedCategories]);
     }
 
@@ -116,7 +116,7 @@ class CategoryController extends Controller
     {
         $categories = Category::getCategories();
         $categoriesOf = Category::getCategoriesOf($category);
-        $paginatedCategories=PaginationController::paginateArray($request, $categoriesOf);
+        $paginatedCategories=PaginationController::paginateArray($request, $categoriesOf, 10);
         return view('admin.categories.categories',['categories'=>$categories, 'paginatedCategories' => $paginatedCategories, 'name' => $category->category_name]);
     }
 
@@ -244,7 +244,7 @@ class CategoryController extends Controller
         $name = Category::find($name);
         $result = Category::getCategoriesOf($name);
         //paginates the result
-        $paginatedCategories=PaginationController::paginateArray($request, $result);
+        $paginatedCategories=PaginationController::paginateArray($request, $result, 10);
         //return the results to the view
         return view('admin.categories.categories', ['categories' =>$categories,'paginatedCategories' => $paginatedCategories, 'name' => $name->category_name]);
     }

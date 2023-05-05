@@ -19,14 +19,11 @@ class PaginationController extends Controller
      * The function paginates the data
      * Takes as parameter the request and the data to paginate
      */
-    public static function paginateArray (Request $request, $data) {
+    public static function paginateArray (Request $request, $data, $perPage) {
 
     
     // Create a new  collection from data
     $itemsCollection = collect($data);
-
-    // Defines the page length
-    $perPage = 10;
 
     // Gets the current page number from the url
     $currentPage = LengthAwarePaginator::resolveCurrentPage();
