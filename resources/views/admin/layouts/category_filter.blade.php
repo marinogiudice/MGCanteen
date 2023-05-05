@@ -41,10 +41,10 @@
                 @endphp
                 @if(isset($children))
                 @if(!($children->contains($categoryEl->get_category_name()) ) && (!($categoryEl->get_category_name() == $category->category_name)))
-                    <option value="{{ $categoryEl->get_category_name() }}"  @if (old('category') == $categoryEl->get_category_name()) selected="selected" @endif {{ $selected }} >{{ $ident.$categoryEl->get_category_name() }}</option>
+                    <option value="{{ $categoryEl->get_category_name() }}"  @if (old('category') == $categoryEl->get_category_name()) selected="selected" @endif {{ $selected }} >{{ $ident.capitalize($categoryEl->get_category_name()) }}</option>
                 @endif
                 @else
-                <option value="{{ $categoryEl->get_category_name() }}"  @if (old('category') == $categoryEl->get_category_name()) selected="selected" @endif {{ $selected }} >{{ $ident.$categoryEl->get_category_name() }}</option>
+                <option value="{{ $categoryEl->get_category_name() }}"  @if (old('category') == $categoryEl->get_category_name()) selected="selected" @endif {{ $selected }} >{{ $ident.capitalize($categoryEl->get_category_name()) }}</option>
                 @endif
             @endforeach
             
